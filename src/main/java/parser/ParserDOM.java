@@ -1,4 +1,5 @@
 package parser;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -11,16 +12,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public class ParserDOM {
-    public static void main(String [] args) throws IOException, SAXException, ParserConfigurationException {
+    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
         DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
         f.setValidating(false);
         f.setIgnoringElementContentWhitespace(true);
         DocumentBuilder builder = f.newDocumentBuilder();
-        Document doc = builder.parse(
-                ParserDOM.class.getResourceAsStream("GunScheme.xsd.xml"));
-
-        printDom("",doc.getFirstChild());
-
+        Document doc = builder.parse("src/main/resources/GunScheme.xml");
+        printDom("", doc.getFirstChild());
     }
 
     private static void printDom(String prefix, Node node) {
@@ -31,10 +29,10 @@ public class ParserDOM {
         }
         NamedNodeMap attributes = node.getAttributes();
         if (attributes != null) {
-            for (int i = 0 ; i < attributes.getLength(); i++) {
+            for (int i = 0; i < attributes.getLength(); i++) {
                 Node attr = attributes.item(i);
                 System.out.println(prefix +
-                        " attr = \"" + attr.getNodeName()  + "\"" +
+                        " attr = \"" + attr.getNodeName() + "\"" +
                         " value = \"" + attr.getTextContent().toString() + "\" ");
             }
         }
