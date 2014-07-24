@@ -1,0 +1,79 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<sch:schema xmlns:sch="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.example.com/Guns"
+            xmlns="http://www.example.com/Guns">
+
+    <sch:element name="guns" type="gnListType"/>
+    <sch:complexType name="gnListType">
+
+
+        <sch:sequence>
+            <sch:element name="gun" type="gunType" minOccurs="1" maxOccurs="unbounded"/>
+        </sch:sequence>
+    </sch:complexType>
+
+    <sch:complexType name="gunType">
+        <sch:sequence>
+            <sch:element name="model" type="sch:string"/>
+            <sch:element name="handy" type="handyType"/>
+            <sch:element name="original" type="originalType"/>
+            <sch:element name="ttc" type="ttcType"/>
+            <sch:element name="material" type="materialType"/>
+        </sch:sequence>
+        <sch:attribute name="id" type="sch:int" use="required"/>
+    </sch:complexType>
+
+     <sch:simpleType name="handyType" >
+        <sch:restriction base="sch:string">
+            <sch:enumeration value="one hand"/>
+            <sch:enumeration value="two hand"/>
+        </sch:restriction>
+    </sch:simpleType>
+
+   <sch:simpleType name="originalType">
+        <sch:restriction base="sch:string">
+            <sch:enumeration value="Russia"/>
+            <sch:enumeration value="China"/>
+            <sch:enumeration value="USA"/>
+        </sch:restriction>
+    </sch:simpleType>
+
+    <sch:complexType name="ttcType">
+        <sch:sequence>
+            <sch:element name="range" type="rangeType"/>
+            <sch:element name="sightingrange" type="sch:int"/>
+            <sch:element name="cage" type="cageType"/>
+            <sch:element name="optics" type="opticsType"/>
+        </sch:sequence>
+    </sch:complexType>
+
+    <sch:simpleType name="rangeType">
+        <sch:restriction base="sch:string">
+            <sch:enumeration  value="low[0-500]"/>
+            <sch:enumeration  value="Middle[500-1000]"/>
+            <sch:enumeration  value="High[1000-]"/>
+        </sch:restriction>
+    </sch:simpleType>
+
+    <sch:simpleType name="cageType">
+        <sch:restriction base="sch:string">
+            <sch:enumeration value="have"/>
+            <sch:enumeration value="have not"/>
+        </sch:restriction>
+    </sch:simpleType>
+
+    <sch:simpleType name="opticsType">
+        <sch:restriction base="sch:string">
+            <sch:enumeration value="have"/>
+            <sch:enumeration value="have not"/>
+        </sch:restriction>
+    </sch:simpleType>
+
+    <sch:simpleType name="materialType">
+        <sch:restriction base="sch:string">
+            <sch:enumeration value="Metal"/>
+            <sch:enumeration value="No metal"/>
+        </sch:restriction>
+
+    </sch:simpleType>
+</sch:schema>

@@ -1,0 +1,17 @@
+<stud:students xmlns:stud="http://www.example.com.com/Students">
+  <!--1 or more repetitions:-->
+  <student id="3">
+    <lastname>string</lastname>
+    <firstname>string</firstname>
+    <birthday>string</birthday>
+    <address>
+      <city>string</city>
+      <street>string</street>
+      <build>string</build>
+      <flat>3</flat>
+    </address>
+    <email>[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,4}</email>
+    <group>string</group>
+    <education>Бакалавриат</education>
+  </student>
+</stud:students>
